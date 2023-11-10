@@ -1,21 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AComponent } from './pages/a/a.component';
-import { BComponent } from './pages/b/b.component';
-import { Error404Component } from './pages/error404/error404.component';
-import { SubaComponent } from './pages/a/suba/suba.component';
-import { SubbComponent } from './pages/a/subb/subb.component';
 import { guardGuard } from './guards/guard.guard';
+import { loginGuard } from './guards/login.guard';
+import { NewComponent } from './pages/new/new.component';
+import { NoteComponent } from './components/note/note.component';
+import { LoginComponent } from './pages/login/login.component';
+import { Error404Component } from './pages/error404/error404.component';
+import { NotesComponent } from './pages/notes/notes.component';
 
 const routes: Routes = [
-  {path:'a', component:AComponent, children:[
-    {path:'suba', component:SubaComponent},
-    {path:'subb', component:SubbComponent},
-    {path:'**', redirectTo:'/a/suba', pathMatch:'full'}
-  ],
-  canActivate:[guardGuard]},
-  {path:'b/:id/:page', component:BComponent},
-  {path:'', redirectTo:'/a', pathMatch:'full'},
+  {path:"notes", component:NotesComponent ,
+  canActivate:[loginGuard]},
+  {path:"newnote", component:NewComponent,
+  canActivate:[loginGuard]},
+  {path:"about", loadComponent: ()=>import('./pages/about/about.component').then(c=>c.AboutComponent)},
+  {path:'', redirectTo:'/home', pathMatch:'full'},
+  {path:'login', component:LoginComponent,
+    canActivate:[loginGuard]},
   {path:'**', component:Error404Component}
 ];
 

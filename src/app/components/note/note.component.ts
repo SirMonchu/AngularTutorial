@@ -19,13 +19,8 @@ export class NoteComponent implements OnInit{
 
 constructor() {
  }
-
-ngOnInit(): void {
-  console.log("NGONINIT")
-}
-ngAfterContentInit(){
-  console.log("NGAFTERCONTENTINIT");
-}
+  ngOnInit(): void {
+  }
 
 public editNoteFn(){
   if(this.note.id==-1) return;

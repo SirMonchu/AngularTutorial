@@ -1,28 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-error404',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
-    <p (click)='inicio()'>
-      error404 works!
-    </p>
-  `,
-  styles: [
-  ]
+  templateUrl: './error404.component.html',
+  styleUrls: ['./error404.component.css']
 })
+export class Error404Component {
 
-export class Error404Component implements OnInit {
-
-  constructor(private router:Router) { }
-
-  ngOnInit(): void {
-  }
-
-  inicio(){
-    this.router.navigate(['/'])
-  }
 }
