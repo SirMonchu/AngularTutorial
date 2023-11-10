@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { INote } from './model/INote';
+import { LoginService } from './services/login.service';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,12 @@ export class AppComponent {
   
   public alerta(){
     alert("Alerta Roja");
+  }
+
+  constructor(private loginService: LoginService) {}
+
+  ngOnInit() {
+    
   }
 
 }

@@ -14,7 +14,7 @@ const routes: Routes = [
   {path:"newnote", component:NewComponent,
   canActivate:[loginGuard]},
   {path:"about", loadComponent: ()=>import('./pages/about/about.component').then(c=>c.AboutComponent)},
-  {path:'', redirectTo:'/home', pathMatch:'full'},
+  {path:'', redirectTo:'/notes', pathMatch:'full'},
   {path:'login', component:LoginComponent,
     canActivate:[loginGuard]},
   {path:'**', component:Error404Component}

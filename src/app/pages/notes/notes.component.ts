@@ -45,4 +45,17 @@ export class NotesComponent implements OnInit {
     return item.id;
   }
 
+  public noteToEdit: INote | null = null;
+
+  public startEditing(note: INote) {
+    this.noteToEdit = {...note}; // Crear una copia de la nota para evitar la edición en tiempo real
+  }  
+
+public async finishEditing() {
+  if (this.noteToEdit) {
+    await this.notesS.updateNote(this.noteToEdit);
+    this.noteToEdit = null; // Limpiar el formulario de edición
+  }
+}
+
 }

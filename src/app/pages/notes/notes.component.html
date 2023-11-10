@@ -1,2 +1,26 @@
+<div *ngIf="noteToEdit" class="modal show d-block" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Editar Nota</h5>
+        <button type="button" class="btn-close" (click)="noteToEdit = null"></button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="finishEditing()">
+          <div class="mb-3">
+            <label for="title" class="form-label">Título</label>
+            <input type="text" class="form-control" id="title" [(ngModel)]="noteToEdit.title" name="title">
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Descripción</label>
+            <textarea class="form-control" id="description" [(ngModel)]="noteToEdit.description" name="description"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 <app-note *ngFor="let note of this.notesS.getNotes();let i=index;trackBy:trackByNotes" [note]="note"
-(editNote)="this.editingNote(note)" (removeNote)="this.removingNote(note)" appHighlight></app-note>
+(editNote)="startEditing($event)" (removeNote)="this.removingNote(note)" appHighlight></app-note>
+
